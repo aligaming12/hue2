@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu - Du Lịch Huế</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .about-hero {
+            height: 50vh;
+            background: url('assets/images/about-hero.jpg') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            color: white;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 70px;
+        }
+        
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .about-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .about-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .about-section {
+            padding: 60px 0;
+        }
+        
+        .about-section:nth-child(even) {
+            background-color: var(--light-bg);
+        }
+        
+        .about-container {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-hover);
+        }
+        
+        .team-photo {
+            height: 250px;
+        }
+        
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .team-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .team-name {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .team-role {
+            color: var(--light-text);
+            margin-bottom: 15px;
+        }
+        
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .team-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background-color: var(--light-bg);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .team-social a:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .about-container {
+                flex-direction: column;
+            }
+            
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-text h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>HUẾ TOURISM</h1>
+            </div>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="index.html#destinations">Điểm Đến</a></li>
+                    <li><a href="index.html#culture">Văn Hóa</a></li>
+                    <li><a href="index.html#cuisine">Ẩm Thực</a></li>
+                    <li><a href="index.html#travel-tips">Hướng Dẫn</a></li>
+                    <li><a href="about.html" class="active">Giới Thiệu</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="about-hero">
+        <div class="about-hero-content">
+            <h1>Giới thiệu về Huế Tourism</h1>
+            <p>Khám phá vẻ đẹp cố đô cùng những thông tin du lịch hữu ích nhất</p>
+        </div>
+    </div>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-image">
+                    <img src="assets/images/about-history.jpg" alt="Lịch sử Huế">
+                </div>
+                <div class="about-text">
+                    <h2>Lịch sử của Huế</h2>
+                    <p>Huế là cố đô của Việt Nam dưới triều Nguyễn từ năm 1802 đến năm 1945. Với lịch sử hơn 400 năm hình thành và phát triển, Huế là nơi lưu giữ những giá trị văn hóa, lịch sử to lớn của đất nước.</p>
+                    <p>Năm 1636, chúa Nguyễn thiết lập phủ chính tại Kim Long, sau đó dời về Phú Xuân (Huế ngày nay). Đến năm 1802, sau khi Nguyễn Ánh thống nhất đất nước, đã định đô tại Huế và cho xây dựng Kinh thành Huế theo mô hình Tử Cấm Thành của nhà Minh, nhà Thanh bên Trung Quốc.</p>
+                    <p>Năm 1993, Quần thể di tích Cố đô Huế đã được UNESCO công nhận là Di sản Văn hóa Thế giới. Năm 2003, Nhã nhạc cung đình Huế cũng được công nhận là Di sản Văn hóa Phi vật thể của nhân loại.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-text">
+                    <h2>Vị trí địa lý</h2>
+                    <p>Huế nằm ở miền Trung Việt Nam, thuộc tỉnh Thừa Thiên Huế. Thành phố nằm bên bờ sông Hương thơ mộng, cách Hà Nội khoảng 700km về phía nam và cách TP. Hồ Chí Minh khoảng 1100km về phía bắc.</p>
+                    <p>Huế có vị trí địa lý đặc biệt, nằm ở vùng đồng bằng ven biển, được bao bọc bởi dãy Trường Sơn phía tây và biển Đông phía đông. Với khí hậu nhiệt đới gió mùa, Huế có mùa mưa kéo dài từ tháng 9 đến tháng 1, và mùa khô từ tháng 2 đến tháng 8.</p>
+                    <p>Nhờ vị trí đắc địa, Huế có điều kiện tự nhiên phong phú với hệ sinh thái đa dạng từ núi, đồng bằng đến biển, tạo nên một vùng đất có cảnh quan thiên nhiên tuyệt đẹp.</p>
+                </div>
+                <div class="about-image">
+                    <img src="assets/images/about-geography.jpg" alt="Vị trí địa lý Huế">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-image">
+                    <img src="assets/images/about-tourism.jpg" alt="Du lịch Huế">
+                </div>
+                <div class="about-text">
+                    <h2>Du lịch Huế ngày nay</h2>
+                    <p>Ngành du lịch Huế ngày càng phát triển và trở thành một trong những trọng điểm du lịch của cả nước. Mỗi năm, Huế đón hàng triệu lượt khách trong và ngoài nước đến tham quan, nghỉ dưỡng.</p>
+                    <p>Ngoài các di tích lịch sử, Huế còn hấp dẫn du khách bởi cảnh quan thiên nhiên tuyệt đẹp, ẩm thực độc đáo và nét văn hóa truyền thống đặc sắc. Festival Huế được tổ chức 2 năm một lần cũng là điểm nhấn thu hút đông đảo du khách.</p>
+                    <p>Trong những năm gần đây, Huế đã và đang đầu tư phát triển cơ sở hạ tầng, nâng cao chất lượng dịch vụ du lịch, đa dạng hóa các sản phẩm du lịch để đáp ứng nhu cầu ngày càng cao của du khách.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title">Đội ngũ của chúng tôi</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px;">Huế Tourism là đội ngũ chuyên nghiệp với nhiều năm kinh nghiệm trong lĩnh vực du lịch. Chúng tôi cam kết mang đến cho du khách những trải nghiệm tốt nhất khi đến với Huế.</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="assets/images/team-1.jpg" alt="Nguyễn Văn A">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Nguyễn Văn A</h3>
+                        <div class="team-role">Giám đốc điều hành</div>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="assets/images/team-2.jpg" alt="Trần Thị B">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Trần Thị B</h3>
+                        <div class="team-role">Trưởng phòng Marketing</div>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="assets/images/team-3.jpg" alt="Lê Văn C">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Lê Văn C</h3>
+                        <div class="team-role">Chuyên gia văn hóa</div>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="assets/images/team-4.jpg" alt="Phạm Thị D">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Phạm Thị D</h3>
+                        <div class="team-role">Hướng dẫn viên cao cấp</div>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>HUẾ TOURISM</h3>
+                    <p>Khám phá vẻ đẹp cố đô</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Liên kết nhanh</h4>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="index.html#destinations">Điểm đến</a></li>
+                        <li><a href="index.html#culture">Văn hóa</a></li>
+                        <li><a href="index.html#cuisine">Ẩm thực</a></li>
+                        <li><a href="index.html#travel-tips">Hướng dẫn</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Liên hệ</h4>
+                    <p><i class="fas fa-envelope"></i> info@huetourism.com</p>
+                    <p><i class="fas fa-phone"></i> +84 234 1234 567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Trung tâm Du lịch Huế, Thừa Thiên Huế</p>
+                </div>
+                <div class="footer-social">
+                    <h4>Theo dõi chúng tôi</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Huế Tourism. Đã đăng ký bản quyền.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile navigation toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    mainNav.classList.toggle('active');
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    const isClickInsideNav = mainNav.contains(event.target);
+                    const isClickInsideToggle = menuToggle.contains(event.target);
+                    
+                    if (!isClickInsideNav && !isClickInsideToggle && mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                    }
+                });
+                
+                // Close menu when clicking on a nav link
+                const navLinks = document.querySelectorAll('.main-nav a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mainNav.classList.remove('active');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

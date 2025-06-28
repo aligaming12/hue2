@@ -1,0 +1,2152 @@
+/* Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #4158D0;
+    --primary-gradient: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    --secondary-color: #C850C0;
+    --accent-color: #FFCC70;
+    --text-color: #2b2d42;
+    --light-text: #6c757d;
+    --white: #fff;
+    --light-bg: rgba(255, 255, 255, 0.7);
+    --dark-bg: rgba(20, 20, 30, 0.95);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    --box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.18);
+    --glass-bg: rgba(255, 255, 255, 0.2);
+    --enhanced-gradient: linear-gradient(135deg, #4158D0 0%, #C850C0 50%, #FFCC70 100%);
+    --glass-blur: blur(8px);
+}
+
+/* Reduced blur effect for better performance on low-end devices */
+@media screen and (max-width: 768px) {
+    :root {
+        --glass-blur: blur(5px);
+    }
+}
+
+/* Only apply complex background on high-performance devices */
+@media (prefers-reduced-motion: no-preference) {
+    body {
+        background-image: 
+            radial-gradient(circle at top left, rgba(65, 88, 208, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at center, rgba(200, 80, 192, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at bottom right, rgba(255, 204, 112, 0.15) 0%, transparent 50%);
+    }
+}
+
+/* Simplified background for reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    body {
+        background-image: none;
+    }
+    
+    /* Disable animations */
+    .floating-element,
+    .section-title::after,
+    .stat-item::before {
+        animation: none !important;
+    }
+}
+
+/* Enhanced responsive styles */
+@media screen and (max-width: 768px) {
+    section {
+        padding: 60px 0;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+    
+    .overview-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .overview-text::before {
+        display: none;
+    }
+    
+    .slide-caption h2 {
+        font-size: 2.2rem;
+    }
+    
+    .slide-caption p {
+        font-size: 1rem;
+    }
+    
+    .footer-content {
+        gap: 30px;
+    }
+    
+    /* Responsive navigation */
+    .menu-toggle {
+        display: block;
+        z-index: 100;
+    }
+    
+    .filter-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .filter-btn {
+        margin: 0 5px 10px;
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+    
+    /* Optimize glass effects for better mobile performance */
+    .destination-card,
+    .culture-feature,
+    .cuisine-slide,
+    .tip-card {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: rgba(255, 255, 255, 0.85);
+    }
+    
+    /* Allow horizontal scrolling for cuisine slider on mobile */
+    .cuisine-slider {
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+    }
+    
+    .cuisine-slide {
+        scroll-snap-align: start;
+        min-width: 85%;
+    }
+}
+
+/* Small mobile devices */
+@media screen and (max-width: 480px) {
+    .btn-explore {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    #hero {
+        height: 80vh;
+    }
+    
+    .slide-caption {
+        bottom: 20%;
+        left: 5%;
+    }
+    
+    .slide-caption h2 {
+        font-size: 1.8rem;
+    }
+    
+    .filter-btn {
+        padding: 8px 15px;
+        font-size: 0.8rem;
+        margin: 0 5px 8px;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    line-height: 1.7;
+    background-color: #f5f5f7;
+    background-image: 
+        radial-gradient(circle at top left, rgba(65, 88, 208, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at center, rgba(200, 80, 192, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at bottom right, rgba(255, 204, 112, 0.15) 0%, transparent 50%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+    /* Only hide cursor on non-touch devices */
+    cursor: auto;
+}
+
+/* Apply cursor: none only on devices that support cursor */
+@media (pointer: fine) {
+    body {
+        cursor: none !important;
+    }
+    
+    a, button, .destination-card, .culture-feature, .cuisine-slide, .tip-card, .stat-item, .social-icons a {
+        cursor: none !important;
+    }
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    background: var(--enhanced-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0px 2px 10px rgba(65, 88, 208, 0.15);
+    letter-spacing: 1px;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: var(--enhanced-gradient);
+    margin: 15px auto 0;
+    border-radius: 2px;
+    box-shadow: 0 2px 10px rgba(65, 88, 208, 0.2);
+    transform: translateZ(0);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(65, 88, 208, 0.4);
+        transform: scale(1);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(65, 88, 208, 0);
+        transform: scale(1.05);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(65, 88, 208, 0);
+        transform: scale(1);
+    }
+}
+
+section {
+    padding: 100px 0;
+    position: relative;
+}
+
+img {
+    max-width: 100%;
+    border-radius: 16px;
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+button {
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: none;
+    outline: none;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Button ripple effect */
+button:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(30, 30);
+        opacity: 0;
+    }
+}
+
+button:focus:not(:active)::after {
+    animation: ripple 0.8s ease-out;
+}
+
+/* Header Styles - Enhanced Liquid Glass Effect */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    transform: translateY(0);
+    transition: transform 0.4s ease, background 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    border-bottom: var(--glass-border);
+}
+
+header:hover {
+    background: rgba(255, 255, 255, 0.85);
+}
+
+/* Hide header when scrolling down */
+header.header-hidden {
+    transform: translateY(-100%);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    margin: 0;
+    background: var(--enhanced-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+}
+
+.logo h1::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -10px;
+    right: -10px;
+    bottom: -5px;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+    z-index: -1;
+    opacity: 0.6;
+    border-radius: 30px;
+    filter: blur(5px);
+}
+
+/* Enhanced Navigation */
+.main-nav {
+    display: flex;
+    position: relative;
+}
+
+.main-nav::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -20px;
+    right: -20px;
+    bottom: -10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    z-index: -1;
+    border: var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    opacity: 0;
+    transform: scaleX(0.9);
+    transition: all 0.4s ease;
+}
+
+header:hover .main-nav::before {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+.main-nav li {
+    margin: 0 15px;
+    position: relative;
+}
+
+.main-nav a {
+    font-weight: 500;
+    position: relative;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 5px;
+    height: 2px;
+    background: var(--enhanced-gradient);
+    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transform: scaleX(0);
+    transform-origin: center;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(65, 88, 208, 0.3);
+}
+
+.main-nav a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+}
+
+.main-nav a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Active navigation link */
+.main-nav a.active {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.main-nav a.active::after {
+    transform: scaleX(1);
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+/* Enhanced Hero Section with Slideshow */
+#hero {
+    height: 100vh;
+    position: relative;
+    padding: 0;
+    margin-top: 70px;
+}
+
+.slideshow-container {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 0 0 30px 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+    will-change: opacity;
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    filter: brightness(0.85);
+    transform: scale(1.05);
+    transition: transform 6s ease;
+    will-change: transform;
+}
+
+.slide.active img {
+    transform: scale(1);
+}
+
+.slide-caption {
+    position: absolute;
+    bottom: 25%;
+    left: 10%;
+    max-width: 600px;
+    color: var(--white);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    z-index: 3;
+    animation: fadeInUp 0.8s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-caption h2 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    background: linear-gradient(to right, #fff, rgba(255,255,255,0.7));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.slide-caption p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    position: relative;
+    display: inline-block;
+    padding: 5px 15px 5px 0;
+}
+
+.slide-caption p::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -5px;
+    width: 3px;
+    height: 100%;
+    background: var(--enhanced-gradient);
+    border-radius: 3px;
+}
+
+.btn-explore {
+    background: rgba(255, 255, 255, 0.25);
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 12px 32px 12px 36px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    overflow: hidden;
+}
+
+.btn-explore::after {
+    content: '\f061';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-explore:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(31, 38, 135, 0.25);
+}
+
+.btn-explore:hover::after {
+    transform: translateX(4px);
+}
+
+/* Slideshow navigation - hide completely */
+.prev, .next {
+    display: none !important;
+}
+
+.dots-container {
+    display: none;
+}
+
+/* Enhanced Overview Section with Liquid Glass Effect */
+#overview {
+    background-color: var(--light-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-radius: 30px;
+    margin: 0 20px;
+    box-shadow: var(--glass-shadow);
+    border: var(--glass-border);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+#overview::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: 0.7s;
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+#overview:hover::before {
+    opacity: 1;
+    left: 100%;
+}
+
+#overview:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    transform: translateY(-5px);
+}
+
+.overview-content {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+.overview-text {
+    flex: 1;
+    position: relative;
+}
+
+.overview-text::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--enhanced-gradient);
+    border-radius: 3px;
+    transform: scaleY(0.7);
+    box-shadow: 0 2px 10px rgba(65, 88, 208, 0.2);
+}
+
+.overview-stats {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-radius: 16px;
+    box-shadow: var(--glass-shadow);
+    min-width: 180px;
+    flex: 1;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    border: var(--glass-border);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-item::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: 0.7s;
+    opacity: 0;
+}
+
+.stat-item:hover::before {
+    opacity: 1;
+    left: 100%;
+}
+
+.stat-item:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: var(--enhanced-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 5px;
+    text-shadow: 0px 2px 10px rgba(65, 88, 208, 0.1);
+    letter-spacing: 1px;
+}
+
+.stat-desc {
+    color: var(--light-text);
+    font-size: 0.9rem;
+    position: relative;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.stat-desc::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+    height: 1px;
+    background: var(--enhanced-gradient);
+    transform: scaleX(0.5);
+    opacity: 0.5;
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover .stat-desc::after {
+    transform: scaleX(1);
+}
+
+/* Enhanced Destinations Section */
+.destinations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.destination-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--glass-shadow);
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1), 
+                opacity 0.3s ease,
+                transform 0.3s ease,
+                display 0s linear 0.3s;
+    position: relative;
+    border: var(--glass-border);
+    opacity: 1;
+    transform: scale(1);
+}
+
+.destination-card.hide {
+    opacity: 0;
+    transform: scale(0.9);
+    height: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+    display: none;
+}
+
+.destination-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.destination-img {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+}
+
+.destination-img::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.7) 100%);
+    z-index: 1;
+    opacity: 0.8;
+    transition: opacity 0.5s ease;
+}
+
+.destination-card:hover .destination-img::after {
+    opacity: 0.6;
+}
+
+.destination-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+    border-radius: 0;
+}
+
+.destination-card:hover .destination-img img {
+    transform: scale(1.1);
+}
+
+.destination-info {
+    padding: 25px;
+    position: relative;
+    z-index: 2;
+}
+
+.destination-info h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    background: var(--enhanced-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: transform 0.3s ease;
+}
+
+.destination-card:hover .destination-info h3 {
+    transform: translateX(5px);
+}
+
+.destination-info p {
+    color: var(--light-text);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.destination-card:hover .destination-info p {
+    transform: translateX(5px);
+}
+
+.btn-details {
+    background: rgba(255, 255, 255, 0.3);
+    color: var(--primary-color);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 24px;
+    font-weight: 500;
+    border-radius: 30px;
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.btn-details:hover {
+    background: var(--enhanced-gradient);
+    color: var(--white);
+    border-color: transparent;
+    padding: 8px 28px;
+}
+
+/* Enhanced Culture Section */
+#culture {
+    background-color: var(--light-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 30px;
+    margin: 0 20px;
+    box-shadow: var(--glass-shadow);
+    border: var(--glass-border);
+    overflow: hidden;
+    position: relative;
+}
+
+#culture::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: 0.7s;
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+#culture:hover::before {
+    opacity: 1;
+    left: 100%;
+}
+
+.culture-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.culture-feature {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: var(--glass-shadow);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    border: var(--glass-border);
+}
+
+.culture-feature::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: 0.7s;
+    opacity: 0;
+}
+
+.culture-feature:hover::before {
+    opacity: 1;
+    left: 100%;
+}
+
+.culture-feature:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.culture-icon {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    transition: var(--transition);
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.culture-feature:hover .culture-icon {
+    transform: scale(1.15);
+}
+
+.culture-feature h3 {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Cuisine Section - Liquid Glass */
+.cuisine-slider {
+    display: flex;
+    overflow-x: auto;
+    gap: 30px;
+    padding: 20px 0;
+    scrollbar-width: none;
+}
+
+.cuisine-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.cuisine-slide {
+    min-width: 340px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--glass-shadow);
+    transition: var(--transition);
+    flex: 0 0 auto;
+    border: var(--glass-border);
+    position: relative;
+}
+
+.cuisine-slide::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: 0.7s;
+    opacity: 0;
+    z-index: 5;
+}
+
+.cuisine-slide:hover::before {
+    opacity: 1;
+    left: 100%;
+}
+
+.cuisine-slide:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.cuisine-slide img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+.cuisine-info {
+    padding: 25px;
+    position: relative;
+    z-index: 2;
+    background-color: var(--white);
+}
+
+.cuisine-info h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.cuisine-info p {
+    color: var(--light-text);
+    margin-bottom: 20px;
+}
+
+/* Travel Tips Section - Liquid Glass */
+#travel-tips {
+    background-color: var(--light-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 30px;
+    margin: 0 20px;
+    box-shadow: var(--glass-shadow);
+    border: var(--glass-border);
+    overflow: hidden;
+    position: relative;
+}
+
+#travel-tips::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: 0.7s;
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+#travel-tips:hover::before {
+    opacity: 1;
+    left: 100%;
+}
+
+/* Enhanced Destinations Section */
+#destinations {
+    position: relative;
+    z-index: 1;
+}
+
+#destinations::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    z-index: -1;
+    border-radius: 30px;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Enhanced Cuisine Section */
+#cuisine {
+    position: relative;
+    z-index: 1;
+}
+
+#cuisine::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    z-index: -1;
+    border-radius: 30px;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.tips-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.tip-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 30px 25px;
+    border-radius: 20px;
+    box-shadow: var(--glass-shadow);
+    transition: var(--transition);
+    position: relative;
+    z-index: 1;
+    border: var(--glass-border);
+    overflow: hidden;
+}
+
+.tip-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: 0.7s;
+    opacity: 0;
+}
+
+.tip-card:hover::before {
+    opacity: 1;
+    left: 100%;
+}
+
+.tip-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.tip-icon {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    transition: var(--transition);
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.tip-card:hover .tip-icon {
+    transform: translateY(-5px);
+}
+
+.tip-card h3 {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Footer - Liquid Glass */
+footer {
+    background-color: var(--dark-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--white);
+    padding: 80px 0 20px;
+    margin-top: 50px;
+    border-radius: 30px 30px 0 0;
+    box-shadow: var(--glass-shadow);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.footer-logo h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    background: var(--enhanced-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.footer-links h4, .footer-contact h4, .footer-social h4 {
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.footer-links h4::after, 
+.footer-contact h4::after, 
+.footer-social h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 40px;
+    height: 2px;
+    background: var(--enhanced-gradient);
+}
+
+.footer-links ul li {
+    margin-bottom: 12px;
+}
+
+.footer-links ul li a {
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.footer-links ul li a:hover {
+    background: var(--enhanced-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding-left: 5px;
+}
+
+.footer-contact p {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-contact i {
+    color: var(--secondary-color);
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 50%;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-icons a:hover {
+    background: var(--enhanced-gradient);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+}
+
+/* Modal Popup - Liquid Glass */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    overflow-y: auto;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.active {
+    opacity: 1;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    margin: 50px auto;
+    width: 90%;
+    max-width: 900px;
+    border-radius: 20px;
+    box-shadow: var(--glass-shadow);
+    animation: modalOpen 0.5s ease;
+    overflow: hidden;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.4s ease;
+    border: var(--glass-border);
+}
+
+.modal.active .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 32px;
+    color: var(--white);
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: var(--transition);
+    z-index: 10;
+}
+
+.close-modal:hover {
+    background: var(--enhanced-gradient);
+    color: var(--white);
+}
+
+.modal-body {
+    padding: 0;
+    position: relative;
+}
+
+.modal-header {
+    padding: 25px 30px 15px;
+}
+
+.modal-header h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    background: var(--enhanced-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.modal-image img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+.modal-description {
+    padding: 30px;
+}
+
+.modal-description h4 {
+    margin-top: 25px;
+    font-size: 1.3rem;
+    background: var(--enhanced-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.modal-description ul {
+    margin-bottom: 20px;
+    list-style: disc;
+    padding-left: 20px;
+}
+
+.modal-description ul li {
+    margin-bottom: 8px;
+}
+
+.modal-description strong {
+    color: var(--text-color);
+}
+
+/* Add fade-in animations for modal content */
+.modal-header, .modal-image, .modal-description {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.modal-header.fade-in, 
+.modal-image.fade-in, 
+.modal-description.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.modal-header.fade-in {
+    transition-delay: 0.1s;
+}
+
+.modal-image.fade-in {
+    transition-delay: 0.2s;
+}
+
+.modal-description.fade-in {
+    transition-delay: 0.3s;
+}
+
+/* Back to Top Button - Liquid Glass */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: var(--glass-shadow);
+    transition: var(--transition);
+    border: var(--glass-border);
+    outline: none;
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.back-to-top:hover {
+    background: var(--enhanced-gradient);
+    color: var(--white);
+    transform: translateY(-5px);
+    opacity: 1;
+}
+
+/* Hide buttons on destination cards for cleaner UI */
+.destination-card .btn-details {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: var(--transition);
+}
+
+.destination-card:hover .btn-details {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Style the culture buttons to be more subtle */
+.culture-feature .btn-details {
+    background-color: transparent;
+    border: none;
+    color: var(--primary-color);
+    padding: 5px 0;
+    font-weight: 500;
+    position: relative;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.culture-feature .btn-details::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--enhanced-gradient);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.culture-feature .btn-details:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.culture-feature .btn-details:hover {
+    background-color: transparent;
+    background: var(--enhanced-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Enhance cuisine section with hover effects */
+.cuisine-slide {
+    position: relative;
+    overflow: hidden;
+}
+
+.cuisine-info {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.cuisine-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.7) 100%);
+    z-index: 1;
+}
+
+.cuisine-slide .btn-details {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: var(--transition);
+}
+
+.cuisine-slide:hover .btn-details {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .back-to-top {
+        width: 40px;
+        height: 40px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 1rem;
+    }
+    
+    .destination-card .btn-details,
+    .cuisine-slide .btn-details {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* Ensure navigation works well on mobile */
+    .main-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .main-nav.active {
+        display: flex;
+    }
+    
+    .main-nav li {
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .main-nav a {
+        display: block;
+        padding: 15px;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    /* Improve modal appearance on mobile */
+    .modal-content {
+        margin: 30px auto;
+    }
+    
+    .close-modal {
+        top: 15px;
+        right: 15px;
+    }
+    
+    #overview, #culture, #travel-tips {
+        border-radius: 20px;
+        margin: 0 10px;
+    }
+    
+    footer {
+        border-radius: 20px 20px 0 0;
+    }
+}
+
+/* Loading Screen */
+#loading-screen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(45deg, rgba(65, 88, 208, 0.97) 0%, rgba(200, 80, 192, 0.97) 50%, rgba(255, 204, 112, 0.97) 100%);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+    will-change: opacity, visibility;
+}
+
+.loader-container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    max-width: 340px;
+    width: 80%;
+}
+
+.loader-container h2 {
+    color: white;
+    font-family: 'Playfair Display', serif;
+    margin: 20px 0 10px;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.loader-container p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.loader .circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    animation: pulse 1.5s infinite ease-in-out;
+    will-change: transform, opacity;
+}
+
+.loader .circle:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loader .circle:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.6);
+        opacity: 0.4;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.6);
+        opacity: 0.4;
+    }
+}
+
+#loading-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Enhanced Animations and Effects */
+
+/* Ripple effect for buttons */
+button {
+    position: relative;
+    overflow: hidden;
+    --x-pos: 50%;
+    --y-pos: 50%;
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(0);
+    animation: ripple-effect 1s linear;
+    z-index: 1;
+}
+
+@keyframes ripple-effect {
+    to {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+/* Shine effect for cards */
+.shine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 10;
+    border-radius: inherit;
+}
+
+/* Section reveal animations */
+.section-hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+section.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Back to top button with enhanced animation */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: var(--glass-shadow);
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    border: var(--glass-border);
+    outline: none;
+    font-size: 1.2rem;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.back-to-top:hover {
+    background: var(--enhanced-gradient);
+    color: var(--white);
+    transform: translateY(-5px);
+}
+
+.back-to-top.clicked::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    animation: pulse-circle 0.6s ease-out;
+    z-index: -1;
+}
+
+@keyframes pulse-circle {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+}
+
+/* Hover effects for all interactive elements */
+.destination-card, .culture-feature, .cuisine-slide, .tip-card, .stat-item {
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+/* Enhanced image hover effects */
+.destination-card:hover img, .cuisine-slide:hover img {
+    filter: brightness(1.1) contrast(1.1);
+}
+
+/* Text gradient animation */
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.section-title {
+    background-size: 200% auto;
+    animation: gradient-shift 5s ease infinite;
+}
+
+/* Enhanced modal animations */
+.modal-header.fade-in, 
+.modal-image.fade-in, 
+.modal-description.fade-in {
+    animation-name: fadeInUp;
+    animation-duration: 0.6s;
+    animation-fill-mode: both;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.modal-image.fade-in {
+    animation-name: zoomIn;
+    animation-duration: 0.6s;
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale3d(0.95, 0.95, 0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+/* Decorative floating elements */
+.floating-element {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.7;
+    filter: blur(20px);
+    will-change: transform;
+}
+
+.floating-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(65, 88, 208, 0.3), rgba(200, 80, 192, 0.3));
+    animation: float 8s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(20px);
+    }
+}
+
+/* Custom cursor effect for interactive elements */
+.btn-explore, .btn-details, .destination-card, .culture-feature, .cuisine-slide {
+    cursor: pointer;
+}
+
+/* Subtle hover state for all clickable elements */
+a:not(.main-nav a):hover, button:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Media queries for responsive design */
+@media screen and (max-width: 768px) {
+    .floating-element {
+        display: none;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .slide-caption h2 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Custom Cursor - Optimized */
+.custom-cursor-outer {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    will-change: transform;
+    transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
+}
+
+.custom-cursor-inner {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    will-change: transform;
+    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
+}
+
+.custom-cursor-outer.hover {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(200, 80, 192, 0.2);
+}
+
+/* Destination Filter Buttons */
+.filter-container {
+    text-align: center;
+    margin-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.filter-btn {
+    background: rgba(255, 255, 255, 0.3);
+    color: var(--primary-color);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 0;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    border-radius: 30px;
+    padding: 10px 25px;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: var(--enhanced-gradient);
+    color: var(--white);
+    border-color: transparent;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+}
+
+/* Make cuisine slider draggable */
+.cuisine-slider-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.cuisine-slider {
+    display: flex;
+    overflow-x: auto;
+    gap: 30px;
+    padding: 20px 0;
+    scrollbar-width: none;
+    cursor: grab;
+    user-select: none;
+}
+
+.cuisine-slider.grabbing {
+    cursor: grabbing;
+}
+
+.cuisine-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.footer-logo h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    background: var(--enhanced-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.footer-section {
+    padding: 10px;
+}
+
+.footer-links h4, .footer-subscribe h4, .footer-social h4 {
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.footer-links h4::after, 
+.footer-subscribe h4::after, 
+.footer-social h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 40px;
+    height: 2px;
+    background: var(--enhanced-gradient);
+}
+
+.footer-links ul li {
+    margin-bottom: 12px;
+}
+
+.footer-links ul li a {
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.footer-links ul li a:hover {
+    background: var(--enhanced-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding-left: 5px;
+}
+
+.footer-subscribe p {
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.subscribe-form {
+    display: flex;
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+}
+
+.subscribe-form input {
+    flex-grow: 1;
+    border: none;
+    background: transparent;
+    padding: 15px 20px;
+    color: var(--white);
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.subscribe-form input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.subscribe-form button {
+    border: none;
+    background: var(--enhanced-gradient);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 500;
+}
+
+.footer-contact p {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Hide custom cursor on mobile devices */
+@media (pointer: coarse) {
+    .custom-cursor-outer,
+    .custom-cursor-inner {
+        display: none !important;
+    }
+}

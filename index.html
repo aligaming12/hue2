@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Du lịch Huế - Khám phá vẻ đẹp cố đô, di sản văn hóa thế giới với những di tích lịch sử và ẩm thực đặc trưng.">
+    <meta name="keywords" content="Du lịch Huế, Cố đô Huế, Di sản Huế, Kinh thành Huế, Ẩm thực Huế">
+    <meta name="author" content="Huế Tourism">
+    <title>Du Lịch Huế - Khám phá vẻ đẹp cố đô</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Preload key assets for faster page load -->
+    <link rel="preload" href="assets/images/dai-noi.jpg" as="image">
+    <!-- Add theme color for mobile browsers -->
+    <meta name="theme-color" content="#4158D0">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader-container">
+            <div class="loader">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+            <h2>HUẾ TOURISM</h2>
+            <p>Đang tải trang...</p>
+        </div>
+    </div>
+
+    <!-- Decorative Floating Elements -->
+    <div class="floating-element floating-circle" style="top: 15%; left: 5%;"></div>
+    <div class="floating-element floating-circle" style="top: 60%; right: 8%; animation-delay: 1s;"></div>
+    <div class="floating-element floating-circle" style="bottom: 20%; left: 10%; animation-delay: 2s; width: 120px; height: 120px;"></div>
+    <div class="floating-element floating-circle" style="top: 30%; right: 15%; animation-delay: 3s; width: 100px; height: 100px;"></div>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>HUẾ TOURISM</h1>
+            </div>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="#hero" class="active">Trang Chủ</a></li>
+                    <li><a href="#destinations">Điểm Đến</a></li>
+                    <li><a href="#culture">Văn Hóa</a></li>
+                    <li><a href="#cuisine">Ẩm Thực</a></li>
+                    <li><a href="#travel-tips">Hướng Dẫn</a></li>
+                    <li><a href="#contact">Liên Hệ</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="slideshow-container">
+            <div class="slide fade">
+                <img src="assets/images/slides/dai-noi.jpg" alt="Đại Nội Huế" loading="eager" width="1600" height="900">
+                <div class="slide-caption">
+                    <h2>Đại Nội Huế</h2>
+                    <p>Quần thể di tích cố đô hùng vĩ với kiến trúc độc đáo thời Nguyễn</p>
+                    <button class="btn-explore" data-target="dai-noi">Khám phá</button>
+                </div>
+            </div>
+
+            <div class="slide fade">
+                <img src="assets/images/slides/chua-thien-mu.jpg" alt="Chùa Thiên Mụ" loading="lazy" width="1600" height="900">
+                <div class="slide-caption">
+                    <h2>Chùa Thiên Mụ</h2>
+                    <p>Ngôi chùa cổ linh thiêng bên dòng sông Hương thơ mộng</p>
+                    <button class="btn-explore" data-target="thien-mu">Khám phá</button>
+                </div>
+            </div>
+
+            <div class="slide fade">
+                <img src="assets/images/slides/lang-tu-duc.jpg" alt="Lăng Tự Đức" loading="lazy" width="1600" height="900">
+                <div class="slide-caption">
+                    <h2>Lăng Tự Đức</h2>
+                    <p>Công trình kiến trúc tuyệt đẹp giữa thiên nhiên thơ mộng</p>
+                    <button class="btn-explore" data-target="lang-tu-duc">Khám phá</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="dots-container">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </section>
+
+    <section id="overview" data-speed="0.1">
+        <div class="container">
+            <h2 class="section-title">Huế - Cố đô thơ mộng</h2>
+            <div class="overview-content">
+                <div class="overview-text">
+                    <p>Huế không chỉ là cố đô của Việt Nam với hệ thống di tích lịch sử, văn hóa đặc sắc mà còn là nơi lưu giữ những giá trị truyền thống, văn hóa và ẩm thực đặc trưng. Với hơn 100 di tích kiến trúc nghệ thuật và danh lam thắng cảnh, Huế được UNESCO công nhận là Di sản Văn hóa Thế giới vào năm 1993.</p>
+                    <p>Đến với Huế, du khách sẽ được chiêm ngưỡng vẻ đẹp cổ kính của các công trình kiến trúc đặc sắc như Kinh thành Huế, các lăng tẩm vua chúa, đền đài, chùa chiền; đồng thời thưởng thức ẩm thực cung đình độc đáo và tận hưởng không khí yên bình, trữ tình của thành phố bên dòng sông Hương.</p>
+                </div>
+                <div class="overview-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">1802-1945</div>
+                        <div class="stat-desc">Thời kỳ làm Kinh đô</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1993</div>
+                        <div class="stat-desc">UNESCO công nhận Di sản</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-desc">Di tích lịch sử văn hóa</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="destinations" data-speed="0.05">
+        <div class="container">
+            <h2 class="section-title">Điểm đến nổi bật</h2>
+            
+            <div class="filter-container">
+                <div class="filter-btn active" data-filter="all">Tất cả</div>
+                <div class="filter-btn" data-filter="di-tich">Di Tích</div>
+                <div class="filter-btn" data-filter="tam-linh">Tâm Linh</div>
+                <div class="filter-btn" data-filter="thien-nhien">Thiên Nhiên</div>
+            </div>
+
+            <div class="destinations-grid">
+                <div class="destination-card" data-id="dai-noi" data-category="di-tich">
+                    <div class="destination-img">
+                        <img src="assets/images/cuisine/dai-noi.jpg" alt="Đại Nội Huế">
+                    </div>
+                    <div class="destination-info">
+                        <h3>Đại Nội Huế</h3>
+                        <p>Quần thể di tích hoàng cung với kiến trúc độc đáo</p>
+                        <button class="btn-details">Chi tiết</button>
+                    </div>
+                </div>
+
+                <div class="destination-card" data-id="thien-mu" data-category="di-tich tam-linh">
+                    <div class="destination-img">
+                        <img src="assets/images/cuisine/chua-thien-mu.jpg" alt="Chùa Thiên Mụ">
+                    </div>
+                    <div class="destination-info">
+                        <h3>Chùa Thiên Mụ</h3>
+                        <p>Ngôi chùa cổ với tháp Phước Duyên bảy tầng nổi tiếng</p>
+                        <button class="btn-details">Chi tiết</button>
+                    </div>
+                </div>
+
+                <div class="destination-card" data-id="lang-tu-duc" data-category="di-tich">
+                    <div class="destination-img">
+                        <img src="assets/images/cuisine/lang-tu-duc.jpg" alt="Lăng Tự Đức">
+                    </div>
+                    <div class="destination-info">
+                        <h3>Lăng Tự Đức</h3>
+                        <p>Công trình kiến trúc tuyệt đẹp giữa thiên nhiên thơ mộng</p>
+                        <button class="btn-details">Chi tiết</button>
+                    </div>
+                </div>
+
+                <div class="destination-card" data-id="thuan-an" data-category="thien-nhien">
+                    <div class="destination-img">
+                        <img src="assets/images/cuisine/bienthuanan.jpg" alt="Biển Thuận An">
+                    </div>
+                    <div class="destination-info">
+                        <h3>Biển Thuận An</h3>
+                        <p>Bãi biển xinh đẹp cách trung tâm thành phố khoảng 15km</p>
+                        <button class="btn-details">Chi tiết</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="culture" data-speed="0.08">
+        <div class="container">
+            <h2 class="section-title">Văn hóa Huế</h2>
+            <div class="culture-features">
+                <div class="culture-feature">
+                    <div class="culture-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Nhã nhạc cung đình</h3>
+                    <p>Di sản văn hóa phi vật thể được UNESCO công nhận</p>
+                    <button class="btn-details" data-id="nha-nhac">Tìm hiểu thêm</button>
+                </div>
+
+                <div class="culture-feature">
+                    <div class="culture-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Nghề thủ công truyền thống</h3>
+                    <p>Làng nghề truyền thống với các sản phẩm tinh xảo</p>
+                    <button class="btn-details" data-id="thu-cong">Tìm hiểu thêm</button>
+                </div>
+
+                <div class="culture-feature">
+                    <div class="culture-icon">
+                        <i class="fas fa-theater-masks"></i>
+                    </div>
+                    <h3>Lễ hội truyền thống</h3>
+                    <p>Các lễ hội đặc sắc mang đậm bản sắc văn hóa Huế</p>
+                    <button class="btn-details" data-id="le-hoi">Tìm hiểu thêm</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cuisine" data-speed="0.06">
+        <div class="container">
+            <h2 class="section-title">Ẩm thực Huế</h2>
+            <div class="cuisine-slider-wrapper">
+                <div class="cuisine-slider">
+                    <div class="cuisine-slide">
+                        <img src="assets/images/cuisine-bun-bo.jpg" alt="Bún bò Huế">
+                        <div class="cuisine-info">
+                            <h3>Bún bò Huế</h3>
+                            <p>Món ăn nổi tiếng với vị cay nồng đặc trưng</p>
+                            <button class="btn-details" data-id="bun-bo">Chi tiết</button>
+                        </div>
+                    </div>
+
+                    <div class="cuisine-slide">
+                        <img src="assets/images/cuisine-banh-khoai.jpg" alt="Bánh khoái">
+                        <div class="cuisine-info">
+                            <h3>Bánh khoái</h3>
+                            <p>Món bánh giòn thơm hấp dẫn của xứ Huế</p>
+                            <button class="btn-details" data-id="banh-khoai">Chi tiết</button>
+                        </div>
+                    </div>
+
+                    <div class="cuisine-slide">
+                        <img src="assets/images/cuisine-com-hen.jpg" alt="Cơm hến">
+                        <div class="cuisine-info">
+                            <h3>Cơm hến</h3>
+                            <p>Món ăn bình dân nhưng đậm đà hương vị</p>
+                            <button class="btn-details" data-id="com-hen">Chi tiết</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="travel-tips" data-speed="0.09">
+        <div class="container">
+            <h2 class="section-title">Hướng dẫn du lịch</h2>
+            <div class="tips-container">
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Thời điểm lý tưởng</h3>
+                    <p>Tháng 1-4 và 9-12 là thời gian lý tưởng để khám phá Huế với thời tiết mát mẻ, ít mưa</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-plane-arrival"></i>
+                    </div>
+                    <h3>Phương tiện di chuyển</h3>
+                    <p>Có thể đến Huế bằng máy bay, tàu hỏa hoặc xe khách từ các thành phố lớn</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <h3>Lưu trú</h3>
+                    <p>Nhiều lựa chọn từ khách sạn 5 sao đến homestay giá rẻ, nên đặt phòng trước trong mùa cao điểm</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3>Lịch trình gợi ý</h3>
+                    <p>Nên dành ít nhất 2-3 ngày để khám phá đầy đủ các điểm đến nổi bật tại Huế</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section footer-logo">
+                    <h3>HUẾ TOURISM</h3>
+                    <p>Khám phá vẻ đẹp cố đô</p>
+                </div>
+                <div class="footer-section footer-links">
+                    <h4>Liên kết nhanh</h4>
+                    <ul>
+                        <li><a href="#hero" class="active">Trang chủ</a></li>
+                        <li><a href="#destinations">Điểm đến</a></li>
+                        <li><a href="#culture">Văn hóa</a></li>
+                        <li><a href="#cuisine">Ẩm thực</a></li>
+                        <li><a href="#travel-tips">Hướng dẫn</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section footer-subscribe">
+                    <h4>Nhận bản tin</h4>
+                    <p>Đăng ký để nhận những thông tin du lịch Huế mới nhất.</p>
+                    <form class="subscribe-form">
+                        <input type="email" placeholder="Email của bạn" aria-label="Email đăng ký" required>
+                        <button type="submit">Đăng ký</button>
+                    </form>
+                </div>
+                <div class="footer-section footer-social">
+                    <h4>Theo dõi chúng tôi</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Huế Tourism. Bản quyền thuộc AliStudio.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Popups for Destination Details -->
+    <div class="modal" id="destination-modal" aria-hidden="true" role="dialog">
+        <div class="modal-content">
+            <span class="close-modal" aria-label="Đóng">&times;</span>
+            <div class="modal-body">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
